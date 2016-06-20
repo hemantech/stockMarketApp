@@ -1,4 +1,5 @@
-angular.module('yourAppName.controllers', [])
+angular.module('yourAppsName.controllers', [])
+
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -41,25 +42,63 @@ angular.module('yourAppName.controllers', [])
   };
 })
 
-.controller('myStocksCtrl', ['$scope',
- function($scope) {
-  $scope.myStocksArray = [
-    {ticker: "AAPL"},
-    {ticker: "GPRO"},
-    {ticker: "FB"},
-    {ticker: "NFLX"},
-    {ticker: "TSLA"},
-    {ticker: "BRK-A"},
-    {ticker: "INTC"},
-    {ticker: "MSFT"},
-    {ticker: "GE"},
-    {ticker: "BAC"},
-    {ticker: "C"},
-    {ticker: "T"}
-  ];
+
+
+.controller('MyStocksCtrl', ['$scope',
+  function($scope) {
+
+    $scope.myStocksArray = [
+      {ticker: "AAPL"},
+      {ticker: "GPRO"},
+      {ticker: "FB"},
+      {ticker: "NFLX"},
+      {ticker: "TSLA"},
+      {ticker: "BRK-A"},
+      {ticker: "INTC"},
+      {ticker: "MSFT"},
+      {ticker: "GE"},
+      {ticker: "BAC"},
+      {ticker: "C"},
+      {ticker: "T"}
+    ];
+
 }])
 
-.controller('stockCtrl', ['$scope', '$stateParams',
-   function($scope, $stateParams) {
-     $scope.ticker = $stateParams.stockTicker;
- }]);
+
+
+.controller('StockCtrl', ['$scope', '$stateParams', 'stockDataService', 'dateService',
+  function($scope, $stateParams, stockDataService, dateService) {
+
+    $scope.ticker = $stateParams.stockTicker;
+    $scope.chartView = 1;
+
+    $scope.$on("$ionicView.afterEnter", function() {
+      getPriceData();
+      getDetailsData();
+    });
+
+    $scope.chartViewFunc = function(n) {
+      $scope.chartView = n;
+    };
+
+    function getPriceData() {
+
+      var promise = stockDataService.getPriceData($scope.ticker);
+
+      promise.then(function(data) {
+        $scope.stockPriceData = data;
+      });
+    }
+
+    function getDetailsData() {
+
+      var promise = stockDataService.getDetailsData($scope.ticker);
+
+      promise.then(function(data) {
+        $scope.stockDetailsData = data;
+      });
+    }
+
+}])
+
+;

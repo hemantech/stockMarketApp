@@ -1,2 +1,2 @@
-angular.module('yourAppName.directives', [])
+angular.module('yourAppsName.directives', [])
 ;

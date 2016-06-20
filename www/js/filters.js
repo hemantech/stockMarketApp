@@ -1,2 +1,2 @@
-angular.module('yourAppName.filters', [])
+angular.module('yourAppsName.filters', [])
 ;
