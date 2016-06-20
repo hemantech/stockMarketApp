@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.yourappname966911" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>yourAppName</name>
+<widget id="com.hemantech.yourappname" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>My Stock App</name>
   <description>
-        An Ionic Framework and Cordova project.
+        My Stock App
     </description>
-  <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+  <author email="hemant@hemantech.com" href="http://www.hemantech.com/">
+      Hemant Kumar
     </author>
   <content src="index.html"/>
   <access origin="*"/>
